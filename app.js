@@ -1,9 +1,12 @@
 const express = require("express");
 const sqlite3 = require("sqlite3").verbose();
+const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const bodyParser = require("body-parser");
 
 const app = express();
+
+app.use(cors({ origin: "*", methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"] }));
 const db = new sqlite3.Database(":memory:");
 
 app.use(bodyParser.json());
